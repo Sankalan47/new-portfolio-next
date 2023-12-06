@@ -1,4 +1,3 @@
-import { Text } from "@chakra-ui/react";
 import reactStringReplace from "react-string-replace";
 
 const Description = ({ desc }) => {
@@ -18,23 +17,16 @@ const Description = ({ desc }) => {
       replacedText.length ? replacedText : desc,
       key,
       (match) => (
-        <Text color={"white"} as="span" key={match}>
+        <span key={match} className="text-white">
           {match}
-        </Text>
+        </span>
       )
     ));
   });
   return (
-    <Text
-      fontSize={{ base: "0.8em", md: "1em" }}
-      lineHeight={2}
-      letterSpacing={1.5}
-      fontWeight={400}
-      color={"#8f9ba8"}
-      marginBottom={"0.7em"}
-    >
+    <p className="text-[0.8em] md:text-[1em] font-normal text-[#8f9ba8] mb-[0.7em] tracking-[1.5] leading-[2]">
       {replacedText}
-    </Text>
+    </p>
   );
 };
 

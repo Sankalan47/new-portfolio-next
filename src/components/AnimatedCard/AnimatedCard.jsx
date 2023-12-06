@@ -1,17 +1,8 @@
-import { chakra, shouldForwardProp } from "@chakra-ui/react";
-import { motion, isValidMotionProp } from "framer-motion";
-
-const ChakraBox = chakra(motion.main, {
-  /**
-   * Allow motion props and non-Chakra props to be forwarded.
-   */
-  shouldForwardProp: (prop) =>
-    isValidMotionProp(prop) || shouldForwardProp(prop),
-});
+import { motion } from "framer-motion";
 
 const AnimatedCard = ({ children }) => {
   return (
-    <ChakraBox
+    <motion.main
       initial={{ opacity: 0, scale: 0.3, y: 200 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -22,7 +13,7 @@ const AnimatedCard = ({ children }) => {
       }}
     >
       {children}
-    </ChakraBox>
+    </motion.main>
   );
 };
 

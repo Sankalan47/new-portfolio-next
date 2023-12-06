@@ -1,6 +1,5 @@
 "use client";
 
-import { Box } from "@chakra-ui/react";
 import { motion, useSpring, useTransform } from "framer-motion";
 import { FaReact, FaCss3Alt, FaAngular, FaNodeJs } from "react-icons/fa";
 import {
@@ -18,7 +17,7 @@ import "./Marquee.css";
 
 const _ = {
   content: (
-    <Box display={"flex"} gap={"50px"} justifyContent={"center"}>
+    <p className="flex gap-[50px] justify-center text-[#a0aec0]">
       &nbsp;
       <AiFillHtml5 />
       <FaCss3Alt />
@@ -30,7 +29,7 @@ const _ = {
       <FaNodeJs />
       <SiExpress />
       <SiMongodb />
-    </Box>
+    </p>
   ),
   speed: 2,
   threshold: 0.014,

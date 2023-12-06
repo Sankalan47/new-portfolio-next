@@ -1,41 +1,27 @@
-import { Button, Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 const ElevatedButton = ({ slug, children }) => {
   const blogUrl = "https://sankalan.hashnode.dev/" + slug;
   return (
-    <Box width={"100%"} position={"relative"}>
-      <Button
-        left={"0"}
-        right={"0"}
-        color={"black"}
-        background={"black"}
-        _hover={{ background: "black" }}
-        pos={"absolute"}
-        border={"2px solid black"}
-      >
+    <div className="relative w-full">
+      <button className="absolute left-0 right-0 text-black border-2 border-black bg-slate-300 -z-10 h-[2.5rem] rounded-[5px]">
         {children}
-      </Button>
-      <Button
-        as={motion.button}
+      </button>
+      <motion.button
+        className="border-2 border-black w-full bg-[#FAF089] text-black hover:bg-[#FAF089] h-[2.5rem] rounded-[5px] font-semibold ease-in-out"
         initial={{ y: -5, x: -5 }}
-        border={"2px solid black"}
         whileHover={{ y: 0, x: 0 }}
         transition={{
-          ease: "ease-in-out",
+          duration: 0.15,
+          delay: 0.1,
         }}
-        transitionDuration={"0"}
-        width={"100%"}
-        background={"yellow.200"}
-        color={"black"}
         href={blogUrl}
         target="_blank"
         rel="noreferrer"
-        _hover={{ background: "yellow.200" }}
       >
         {children}
-      </Button>
-    </Box>
+      </motion.button>
+    </div>
   );
 };
 

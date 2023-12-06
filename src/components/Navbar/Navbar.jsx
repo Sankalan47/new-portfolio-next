@@ -1,11 +1,9 @@
-"use client";
-import { SimpleGrid, useColorModeValue, useColorMode } from "@chakra-ui/react";
-import { Link } from "@chakra-ui/next-js";
+import Link from "next/link";
 import "./Navbar.css";
 import { BsFillFolderFill } from "react-icons/bs";
 import { AiOutlineRise } from "react-icons/ai";
 import { MdLibraryBooks } from "react-icons/md";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const tabsArr = [
@@ -28,42 +26,24 @@ const Navbar = () => {
       activeClass: "active__blog",
     },
   ];
-  const { colorMode } = useColorMode();
 
   const currentRoute = usePathname();
 
-  const bg = useColorModeValue("orange.400", "orange.500");
-
   return (
     <>
-      <SimpleGrid columns={{ md: 3, sm: 1 }} spacing={"10px"} width={"100%"}>
+      <div className="grid md:grid-cols-3 grid-cols-1 gap-[10px] w-full">
         {tabsArr.map((tab) => (
           <Link
             href={tab.url}
             key={tab.name}
-            width={"100%"}
-            height={"60px"}
-            padding={"12px 20px 12px 20px"}
-            background="var(--chakra-colors-whiteAlpha-300)"
-            className={currentRoute === tab.url && "active"}
-            fontWeight={700}
-            alignItems="center"
-            display="flex"
-            justifyContent="center"
-            fontSize="18px"
-            borderRadius="13px"
-            lineHeight="1.5em"
-            letterSpacing="-0.2px"
-            textAlign="center"
-            border={
-              colorMode === "light" && `1px solid var(--chakra-colors-gray-300)`
-            }
-            _hover={{ textDecoration: "none" }}
+            className={` w-full h-16 py-3 px-5 bg-[#292929] font-bold items-center flex justify-center text-lg rounded-xl text-center hover:no-underline ${
+              currentRoute === tab.url && "active"
+            }`}
           >
             {tab.icon}&nbsp; {tab.name}
           </Link>
         ))}
-      </SimpleGrid>
+      </div>
     </>
   );
 };

@@ -1,84 +1,60 @@
 "use client";
-import { Box, Image, Text, Badge } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
 import { FiArrowUpRight } from "react-icons/fi";
+import Image from "next/image";
 
 const Project = ({ name, url, desc, img, tags }) => {
   return (
     <>
       <AnimatedCard>
-        <Box
+        <motion.article
+          className="cursor-pointer rounded-2xl p-4 md:p-8 lg:p-12 bg-[#121831] hover:underline mb-[1rem] md:m-[2rem] lg:m-[3rem]"
           cursor={"pointer"}
-          as={motion.article}
           whileHover={{ scale: 0.98 }}
-          borderRadius={"20px"}
-          padding={{
-            base: "1rem",
-            md: "2rem",
-            lg: "3rem",
-          }}
-          margin={{
-            base: "0rem 0rem 1rem 0rem",
-            md: "0rem 0rem 2rem 0rem",
-            lg: "3rem",
-          }}
-          backgroundColor={"#121831"}
-          _hover={{ textDecoration: "underline" }}
         >
-          <Box as="a" href={url} target="_blank" rel="noopener noreferrer">
+          <a href={url} target="_blank" rel="noopener noreferrer">
             <Image
-              aspectRatio={"1.9"}
-              height={{ base: 250, md: 400, lg: 500 }}
-              width={"100%"}
+              className="object-cover w-full rounded-2xl aspect-[1.9]"
+              height={400}
+              width={400}
               src={img}
-              fallback="Loading"
-              objectFit={"cover"}
               alt={name}
-              borderRadius={"20px"}
+              priority
             />
-          </Box>
+          </a>
           <br />
-          <Box
-            width={"100%"}
+          <a
+            className="w-full"
             as="a"
             href={url}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Text
-              fontSize={{ base: 20, md: 24 }}
-              fontWeight={700}
-              display={"flex"}
-              alignItems={"center"}
-            >
+            <p className="flex items-center text-xl font-bold md:text-2xl">
               {name}&nbsp; <FiArrowUpRight />
-            </Text>
-            {tags.map((tag, index) => (
-              <Badge
-                variant="subtle"
-                colorScheme="green"
-                key={index}
-                marginRight={"5px"}
-                borderRadius={"15px"}
-                padding={"0.3rem"}
-                fontSize={{ base: "0.5rem", md: "0.8em" }}
-              >
-                {tag}
-              </Badge>
-            ))}
-            <br />
-            <Text
+            </p>
+            <div className="flex hover:no-underline">
+              {tags.map((tag, index) => (
+                <div
+                  className="bg-green-100 text-green-800 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300 text-xs md:text-base w-fit mr-1 hover:no-underline mt-1"
+                  key={index}
+                >
+                  {tag}
+                </div>
+              ))}
+            </div>
+            <p
+              className="text-xs font-bold md:text-lg text-[#A0AEC0] mt-2"
               fontSize={{ base: 12, md: 18 }}
               color={"gray.400"}
               fontWeight={700}
-              marginTop={"10px"}
             >
               {desc}
-            </Text>
+            </p>
             <br />
-          </Box>
-        </Box>
+          </a>
+        </motion.article>
       </AnimatedCard>
     </>
   );

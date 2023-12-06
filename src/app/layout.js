@@ -1,6 +1,4 @@
 import { Inter } from "next/font/google";
-import { Providers } from "./providers";
-import { Container } from "@chakra-ui/react";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 
@@ -15,22 +13,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
-          <Container
-            maxW="100vw"
-            minW={"270px"}
-            bg="transparent"
-            centerContent
-            minH={"100vh"}
-            padding={{
-              base: "2.5em 1.25em 2.5em 1.25em",
-              md: "5em 2.5em 5em 2.5em",
-              lg: "5em 2.5em 5em 2.5em",
-            }}
-          >
-            <Header>{children}</Header>
-          </Container>
-        </Providers>
+        <div className="max-w-[100vw] min-w-[270px] bg-transparent min-h-[100vh] px-[1.25em] py-[2.5em] md:px-[2.5em] md:py-[5em] items-center flex-col mx-auto">
+          <Header>{children}</Header>
+        </div>
       </body>
     </html>
   );

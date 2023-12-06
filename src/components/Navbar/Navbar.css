@@ -1,5 +1,3 @@
 .active {
-  background: var(--chakra-colors-orange-500);
-  color: var(--chakra-colors-whiteAlpha-900);
-  border: none;
+  @apply bg-[#DD6B20] text-white;
 }

@@ -1,5 +1,4 @@
-'use client';
-import { Box, Text, SimpleGrid, Grid, GridItem } from "@chakra-ui/react";
+"use client";
 import { motion } from "framer-motion";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
 import Description from "./Description/Description";
@@ -46,72 +45,47 @@ const data = {
 
 const Experience = () => {
   return (
-    <>
+    <div className="mx-auto">
       {data.experience.map((exp) => (
         <AnimatedCard key={exp.id}>
-          <Box
-            as={motion.div}
+          <motion.div
+            className="w-full bg-[#151417] p-[1.2em] mb-[1.2em] rounded-[18px] border-[#fffa83] border"
             whileHover={{ scale: 0.98 }}
-            width={"100%"}
-            background={"#151417"}
-            padding={"1.2em"}
-            marginBottom={"1.2em"}
-            borderRadius={"18px"}
-            border={"1px solid #fffa83"}
           >
-            <Grid templateColumns="repeat(5, 1fr)">
-              <GridItem colSpan={3}>
-                <Text fontSize={{ base: "150%" }} fontWeight={700}>
-                  {exp.role}
-                </Text>
-                <Text
-                  as={"a"}
-                  fontSize={{ base: "1.43em" }}
-                  color={"#ffca80"}
-                  textDecoration={"underline"}
+            <div className="grid grid-cols-5">
+              <div className="col-span-3">
+                <p className="font-bold text-[150%]">{exp.role}</p>
+                <a
+                  className="text-[1.43em] text-[#ffca80] underline flex items-center"
                   href={exp.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  display={"flex"}
-                  alignItems={"center"}
                 >
                   {exp.company} <FiArrowUpRight />
-                </Text>
-              </GridItem>
-              <GridItem colSpan={2}>
-                <Text
-                  fontSize={{ base: "1em" }}
-                  fontWeight={500}
-                  float={"right"}
-                >
+                </a>
+              </div>
+              <div colSpan={2} className="col-span-2">
+                <p className="float-right font-medium text-[1em]">
                   {exp.start} - {exp.end ? exp.end : "Present"}
-                </Text>
-              </GridItem>
-            </Grid>
-            <SimpleGrid
-              columns={{ sm: 4, md: 6, base: 3, lg: 10 }}
-              spacingX="10px"
-              spacingY="10px"
-            >
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10">
               {exp.stack.map((stack) => (
-                <Text
-                  fontSize={{ base: "1em" }}
-                  key={stack}
-                  width={"min-content"}
-                >
+                <p className="text-[1em] w-min" key={stack}>
                   {stack}
-                </Text>
+                </p>
               ))}
-            </SimpleGrid>
+            </div>
             <br />
 
             {exp.description.map((desc) => (
               <Description key={desc} desc={desc} />
             ))}
-          </Box>
+          </motion.div>
         </AnimatedCard>
       ))}
-    </>
+    </div>
   );
 };
 

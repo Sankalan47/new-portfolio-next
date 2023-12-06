@@ -1,30 +1,39 @@
 "use client";
-import React, { Suspense } from "react";
-import {
-  Box,
-  Avatar,
-  chakra,
-  shouldForwardProp,
-  Container,
-  Skeleton,
-  Stack,
-} from "@chakra-ui/react";
-import { motion, isValidMotionProp } from "framer-motion";
-import "./Header.css";
+import React from "react";
+import { motion } from "framer-motion";
 import TweeterBtn from "../TweeterBtn/TweeterBtn";
 import Navbar from "../Navbar/Navbar";
-import InteractiveMarquee from "../Marquee/Marquee";
+// import InteractiveMarquee from "@/components/Marquee/Marquee";
 // import Heading from "./Heading/Heading";
-const Heading = React.lazy(() => import("./Heading/Heading"));
+// const Heading = React.lazy(() => import("./Heading/Heading"));
+import dynamic from "next/dynamic";
+import Image from "next/image";
+
+const Heading = dynamic(() => import("./Heading/Heading"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full animate-pulse">
+      <div className="h-[6.75em] bg-gray-200 rounded-lg dark:bg-gray-700 w-full"></div>
+    </div>
+  ),
+});
+
+const InteractiveMarquee = dynamic(
+  () => import("@/components/Marquee/Marquee"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full animate-pulse">
+        <div className="h-[3.75em] bg-gray-200 rounded-lg dark:bg-gray-700 w-full"></div>
+      </div>
+    ),
+  }
+);
 
 const Header = ({ children }) => {
-  const ChakraBox = chakra(motion.div, {
-    shouldForwardProp: (prop) =>
-      isValidMotionProp(prop) || shouldForwardProp(prop),
-  });
   return (
     <>
-      <ChakraBox
+      <motion.div
         initial={{ opacity: 0, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{
@@ -32,50 +41,28 @@ const Header = ({ children }) => {
           delay: 0.1,
         }}
       >
-        <Box
-          maxW={{ lg: "900", md: "700", sm: "700" }}
-          gap={"50px"}
-          display={"flex"}
-          height={"min-content"}
-          flexDirection={"column"}
-          flexWrap={"nowrap"}
-          overflow={"visible"}
-          alignItems={"center"}
-        >
-          <Box
-            display="flex"
-            flexDirection={"column"}
-            alignItems="center"
-            gap={"20px"}
-            justifyContent="space-between"
-            width={"100%"}
-          >
-            <Avatar
+        <div className="max-w-[700px] lg:max-w-[900px] gap-[50px] flex flex-col flex-nowrap items-center h-min overflow-visible mx-auto">
+          <div className="flex flex-col items-center gap-[20px] justify-between w-full">
+            <Image
               name="Sankalan Dasgupta"
-              height={"100px"}
-              width={"100px"}
+              height={100}
+              width={100}
               src="/icon.png"
-            ></Avatar>
+              alt="Sankalan Dasgupta"
+              className="rounded-full"
+            />
             <TweeterBtn />
-          </Box>
-          <Suspense
-            fallback={
-              <Stack width={"100%"}>
-                <Skeleton height="6.75em" borderRadius={5} />
-              </Stack>
-            }
-          >
-            <Heading />
-          </Suspense>
-          <Box maxW={{ sm: "90vw", base: "90vw", md: "100%" }}>
+          </div>
+          <Heading />
+          <div className="w-[90vw] md:w-full">
             <InteractiveMarquee />
-          </Box>
+          </div>
           <Navbar />
-        </Box>
-      </ChakraBox>
-      <Container maxW={{ md: "700", lg: "1000" }} mt={"50px"} padding={0}>
+        </div>
+      </motion.div>
+      <div className="md:max-w-[700px] lg:max-w-[1000px] p-0 mt-[50px] mx-auto">
         {children}
-      </Container>
+      </div>
     </>
   );
 };

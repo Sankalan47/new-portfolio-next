@@ -1,4 +1,3 @@
-import { SimpleGrid } from "@chakra-ui/react";
 import axios from "axios";
 import Blog from "@/components/Blog/Blog";
 
@@ -7,11 +6,11 @@ const Blogs = async () => {
 
   return (
     <>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacingX="2em" spacingY="1em">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[2em] gap-y-[1em]">
         {data?.data?.publication?.posts?.edges.map((blog, index) => (
           <Blog key={index} blogData={blog.node} />
         ))}
-      </SimpleGrid>
+      </div>
     </>
   );
 };
