@@ -1,6 +1,5 @@
 "use client";
 
-import { Divider } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
 import ElevatedButton from "../ElevatedButton/ElevatedButton";
@@ -28,7 +27,6 @@ const Blog = ({ blogData }) => {
             </div>
             <br />
             <hr className="text-black bg-black opacity-60 border-[0px 0px 1px]" />
-            <Divider />
             <br />
             <div className="w-full">
               <p className="text-2xl font-bold">{blogData.title}</p>

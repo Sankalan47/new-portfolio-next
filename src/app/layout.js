@@ -1,8 +1,8 @@
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Sankalan Dasgupta",
@@ -12,8 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="max-w-[100vw] min-w-[270px] bg-transparent min-h-[100vh] px-[1.25em] py-[2.5em] md:px-[2.5em] md:py-[5em] items-center flex-col mx-auto">
+      <body>
+        <div className="max-w-[100vw] min-w-[270px] bg-black min-h-[100vh] px-[1.25em] py-[2.5em] md:px-[2.5em] md:py-[5em] items-center flex-col mx-auto">
           <Header>{children}</Header>
         </div>
       </body>
