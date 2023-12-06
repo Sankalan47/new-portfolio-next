@@ -1,38 +1,23 @@
 .cont {
-  width: 100%;
-  overflow: hidden;
-  /* color: #e6d5b8; */
-  /* color: var(--chakra); */
-  color: var(--chakra-colors-gray-400);
+  @apply w-full overflow-hidden text-[#A0AEC0];
 }
 
 .loader {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
+  @apply absolute top-4 left-4;
 }
 .bg {
-  height: 100%;
-  width: 100%;
-  background-color: #e6d5b8;
+  @apply h-full w-full bg-[#e6d5b8];
 }
 
 .marquee {
-  display: flex;
-
-  align-items: center;
-  cursor: -webkit-grab;
   /* color: #fff !important; */
+  @apply flex items-center cursor-grab;
 }
 
 .item {
-  font-size: 3em;
-  letter-spacing: -0.05em;
-  padding-right: 0.25em;
-  white-space: nowrap;
+  @apply text-[3em] tracking-tighter pr-[0.25em] whitespace-nowrap;
 }
 
 .drag {
-  cursor: -webkit-grabbing;
-  cursor: grabbing;
+  @apply cursor-grabbing;
 }
