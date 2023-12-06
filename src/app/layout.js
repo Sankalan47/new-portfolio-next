@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-black">
         <div className="max-w-[100vw] min-w-[270px] bg-black min-h-[100vh] px-[1.25em] py-[2.5em] md:px-[2.5em] md:py-[5em] items-center flex-col mx-auto">
           <Header>{children}</Header>
         </div>
