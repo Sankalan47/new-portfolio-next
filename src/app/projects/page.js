@@ -20,7 +20,7 @@ const Projects = () => {
     },
   ];
   return (
-    <>
+    <main>
       <AnimatedCard>
         {projects.map((project, index) => (
           <Project
@@ -33,7 +33,7 @@ const Projects = () => {
           />
         ))}
       </AnimatedCard>
-    </>
+    </main>
   );
 };
 

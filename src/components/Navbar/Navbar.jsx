@@ -11,19 +11,16 @@ const Navbar = () => {
       name: "Experience",
       icon: <AiOutlineRise />,
       url: "/",
-      activeClass: "active__exp",
     },
     {
       name: "Projects",
       icon: <BsFillFolderFill />,
       url: "/projects",
-      activeClass: "active__proj",
     },
     {
       name: "Articles",
       icon: <MdLibraryBooks />,
       url: "/articles",
-      activeClass: "active__blog",
     },
   ];
 
