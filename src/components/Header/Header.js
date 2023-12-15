@@ -10,7 +10,6 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 
 const Heading = dynamic(() => import("./Heading/Heading"), {
-  ssr: false,
   loading: () => (
     <div className="w-full animate-pulse">
       <div className="h-[6.75em] bg-gray-200 rounded-lg dark:bg-gray-700 w-full"></div>
