@@ -1,4 +1,5 @@
 // import { Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 
@@ -14,7 +15,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-black">
         <div className="max-w-[100vw] min-w-[270px] bg-black min-h-[100vh] px-[1.25em] py-[2.5em] md:px-[2.5em] md:py-[5em] items-center flex-col mx-auto">
-          <Header>{children}</Header>
+          <Header>
+            {children}
+            <SpeedInsights />
+          </Header>
         </div>
       </body>
     </html>
