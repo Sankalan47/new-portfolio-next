@@ -7,7 +7,7 @@ const Projects = () => {
     {
       name: "BookOnABudget",
       url: "https://explore.bookonabudget.com",
-      img: "https://ik.imagekit.io/sankalan/portfolio/projects/Screenshot%20(97).png?updatedAt=1699642487178",
+      img: "https://ik.imagekit.io/sankalan/portfolio/projects/bookonabudget.png?updatedAt=1699642487178",
       desc: "End to end travel booking platoform for budget travelers. Built with Next.js, Firebase, and Tailwind CSS.",
       tags: ["Next", "Firebase", "Mongodb", "Node.js", "Express", "Razorpay", "Resend", "Tailwind"],
     },
